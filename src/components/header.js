@@ -1,34 +1,45 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+
+const NavBar = styled.nav`
+  box-shadow: 0 2px 4px rgba(3, 27, 78, 0.1);
+  background: #ffffff;
+  z-index: 15;
+
+  line-height: 44px;
+  font-size: 34px;
+`
+
+const Inner = styled.ul`
+  background: #ffffff;
+
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+
+  padding-top: 12px;
+
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+`
+
+const NavBarItem = styled.li`
+  list-style: none;
+
+  padding-left: 8px;
+  padding-right: 8px;
+`
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+  <NavBar>
+    <Inner>
+      <NavBarItem>{siteTitle}</NavBarItem>
+    </Inner>
+  </NavBar>
 )
 
 Header.propTypes = {
