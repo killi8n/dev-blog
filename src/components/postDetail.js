@@ -97,10 +97,8 @@ const PostDetail = ({ title, date, html, headings }) => {
 
   useEffect(() => {
     if (contentRef.current) {
-      if (h1Elements.length === 0) {
-        const elements = Array.from(
-          contentRef.current.getElementsByTagName("h1")
-        )
+      const elements = Array.from(contentRef.current.getElementsByTagName("h1"))
+      if (h1Elements.length === 0 && elements.length > 0) {
         elements.forEach(element => {
           element.setAttribute("id", element.innerText)
         })

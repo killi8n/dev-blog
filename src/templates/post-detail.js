@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 
 const PostDetailTemplate = props => {
   const { fields, frontmatter, html, headings } = props.data.markdownRemark
+
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.spoiler} />
