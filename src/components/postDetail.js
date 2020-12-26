@@ -31,7 +31,7 @@ const HeadingList = styled.div`
   margin-left: -190px;
   max-width: 180px;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 1365px) {
     display: none;
   }
 `
