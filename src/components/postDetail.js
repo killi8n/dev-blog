@@ -1,9 +1,25 @@
 import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 
-const Header = styled.div`
+// 69 + 40 = navbar height + header margin top
+const HEADING_BREAKPOINT = 69 + 40
+const HEADING_LIST_WIDTH = "180px"
+const HEADING_LIST_MARGIN_RIGHT = "32px"
+
+const Container = styled.div`
   margin-top: 40px;
   margin-bottom: 10px;
+
+  display: flex;
+  flex-direction: row;
+`
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: ${props =>
+    props.isSticky &&
+    `calc(${HEADING_LIST_WIDTH} + ${HEADING_LIST_MARGIN_RIGHT})`};
 `
 
 const Title = styled.h1`
@@ -17,25 +33,30 @@ const Date = styled.span``
 
 const Content = styled.div``
 
-const Heading = styled.div`
-  position: absolute;
-  top: 12%;
-  left: 10%;
-  width: 230px;
+const HeadingList = styled.div`
+  position: ${props => props.isSticky && "fixed"};
+  top: ${props => props.isSticky && "10px"};
+  min-width: ${HEADING_LIST_WIDTH};
+  max-width: ${HEADING_LIST_WIDTH};
+
+  margin-right: ${HEADING_LIST_MARGIN_RIGHT};
 
   @media only screen and (max-width: 480px) {
     display: none;
   }
 `
 
-const HeadingInner = styled.div`
-  position: ${props => props.isSticky && "fixed"};
-  top: ${props => props.isSticky && "10px"};
-  width: 230px;
-`
+const HeadingAnchor = styled.a`
+  font-weight: ${props => props.selected && "bold"};
+  color: ${props => (props.selected ? "#000000" : "#868e96")};
+  display: flex;
 
-// 69 + 40 = navbar height + header margin top
-const HEADING_BREAKPOINT = 69 + 40
+  font-size: 0.9rem;
+
+  & + & {
+    margin-top: 10px;
+  }
+`
 
 const getDimensions = element => {
   const { height } = element.getBoundingClientRect()
@@ -133,33 +154,28 @@ const PostDetail = ({ title, date, html, headings }) => {
   }, [h1Elements, setSelectedH1Text])
 
   return (
-    <>
-      <Heading>
-        <HeadingInner isSticky={isSticky}>
-          {headings.map((heading, index) => {
-            return (
-              <div key={`${heading.value}-${index}`}>
-                <a
-                  href={`#${heading.value}`}
-                  style={{
-                    fontWeight: heading.value === selectedH1Text && "bold",
-                  }}
-                >
-                  {heading.value}
-                </a>
-              </div>
-            )
-          })}
-        </HeadingInner>
-      </Heading>
-      <Header>
+    <Container>
+      <HeadingList isSticky={isSticky}>
+        {headings.map((heading, index) => {
+          return (
+            <HeadingAnchor
+              key={`${heading.value}-${index}`}
+              href={`#${heading.value}`}
+              selected={heading.value === selectedH1Text}
+            >
+              {heading.value}
+            </HeadingAnchor>
+          )
+        })}
+      </HeadingList>
+      <ContentContainer isSticky={isSticky}>
         <Title>{title}</Title>
         <Meta>
           <Date>{date}</Date>
         </Meta>
         <Content ref={contentRef} dangerouslySetInnerHTML={{ __html: html }} />
-      </Header>
-    </>
+      </ContentContainer>
+    </Container>
   )
 }
 

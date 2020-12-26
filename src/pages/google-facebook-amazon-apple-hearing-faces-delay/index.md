@@ -4,7 +4,8 @@ spoiler: "Google, Facebook, Amazon, Apple hearing faces delay"
 date: "2020-07-26"
 ---
 
-<img className={styles["ImageStyle"]} src="https://ichef.bbci.co.uk/news/660/cpsprodpb/ACEE/production/_113607244_applogos.jpg" />
+![thumbnail](https://ichef.bbci.co.uk/news/660/cpsprodpb/ACEE/production/_113607244_applogos.jpg)
+
 The meeting was due to examine whether the four firms were too powerful
 
 네 기업의 지배성 (독점성) 때문에 청문회가 예정되어있다.

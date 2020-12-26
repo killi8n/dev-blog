@@ -4,7 +4,8 @@ spoiler: "Apple, Amazon, Facebook, Google face claims of 'harmful' power"
 date: "2020-08-02"
 ---
 
-<img className={styles["ImageStyle"]} src="https://ichef.bbci.co.uk/news/660/cpsprodpb/BF5C/production/_113688984_ceos.jpg" />
+![thumbnail](https://ichef.bbci.co.uk/news/660/cpsprodpb/BF5C/production/_113688984_ceos.jpg)
+
 Amazon's Jeff Bezos, Apple's Tim Cook, Facebook's Mark Zuckerberg and Google's Sundar Pichai defended their firms
 
 아마존의 Jeff Bezos, 애플의 Tim Cook, 페이스북의 Mark Zuckerberg 와 구글의 Sundar Pichai 가 그들의 기업들을 방어하고있다.
