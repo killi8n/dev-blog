@@ -3,23 +3,15 @@ import styled from "styled-components"
 
 // 69 + 40 = navbar height + header margin top
 const HEADING_BREAKPOINT = 69 + 40
-const HEADING_LIST_WIDTH = "180px"
-const HEADING_LIST_MARGIN_RIGHT = "32px"
 
 const Container = styled.div`
   margin-top: 40px;
   margin-bottom: 10px;
 
   display: flex;
-  flex-direction: row;
-`
-
-const ContentContainer = styled.div`
-  display: flex;
   flex-direction: column;
-  margin-left: ${props =>
-    props.isSticky &&
-    `calc(${HEADING_LIST_WIDTH} + ${HEADING_LIST_MARGIN_RIGHT})`};
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const Title = styled.h1`
@@ -34,12 +26,10 @@ const Date = styled.span``
 const Content = styled.div``
 
 const HeadingList = styled.div`
-  position: ${props => props.isSticky && "fixed"};
+  position: ${props => (props.isSticky ? "fixed" : "absolute")};
   top: ${props => props.isSticky && "10px"};
-  min-width: ${HEADING_LIST_WIDTH};
-  max-width: ${HEADING_LIST_WIDTH};
-
-  margin-right: ${HEADING_LIST_MARGIN_RIGHT};
+  margin-left: -190px;
+  max-width: 180px;
 
   @media only screen and (max-width: 480px) {
     display: none;
@@ -154,7 +144,7 @@ const PostDetail = ({ title, date, html, headings }) => {
   }, [h1Elements, setSelectedH1Text])
 
   return (
-    <Container>
+    <>
       <HeadingList isSticky={isSticky}>
         {headings.map((heading, index) => {
           return (
@@ -168,14 +158,14 @@ const PostDetail = ({ title, date, html, headings }) => {
           )
         })}
       </HeadingList>
-      <ContentContainer isSticky={isSticky}>
+      <Container>
         <Title>{title}</Title>
         <Meta>
           <Date>{date}</Date>
         </Meta>
         <Content ref={contentRef} dangerouslySetInnerHTML={{ __html: html }} />
-      </ContentContainer>
-    </Container>
+      </Container>
+    </>
   )
 }
 

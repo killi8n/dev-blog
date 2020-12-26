@@ -1,7 +1,6 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import SummaryBar from "../components/summaryBar"
 import PostItem from "../components/PostItem"
@@ -13,8 +12,8 @@ const PostListTemplate = props => {
   return (
     <Layout>
       <SEO title="post list" />
-      <SummaryBar totalCount={totalCount} />
       <PostList>
+        <SummaryBar totalCount={totalCount} />
         {posts.map(post => {
           const { slug } = post.node.fields
           const { title, date, spoiler } = post.node.frontmatter
