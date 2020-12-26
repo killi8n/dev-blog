@@ -5,7 +5,7 @@ import PostDetail from "../components/postDetail"
 import SEO from "../components/seo"
 
 const PostDetailTemplate = props => {
-  const { fields, frontmatter, html, headings } = props.data.markdownRemark
+  const { frontmatter, html, headings } = props.data.markdownRemark
 
   return (
     <Layout>
