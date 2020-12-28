@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SummaryBar from "../components/summaryBar"
-import PostItem from "../components/PostItem"
+import PostItem from "../components/postItem"
 import PostList from "../components/postList"
 
 const PostListTemplate = props => {
