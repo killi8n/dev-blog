@@ -48,6 +48,8 @@ const HeadingAnchor = styled.a`
   }
 `
 
+const HeadingContentTitle = styled.p``
+
 const getDimensions = element => {
   const { height } = element.getBoundingClientRect()
   const offsetTop = element.offsetTop
@@ -145,19 +147,22 @@ const PostDetail = ({ title, date, html, headings }) => {
 
   return (
     <>
-      <HeadingList isSticky={isSticky}>
-        {headings.map((heading, index) => {
-          return (
-            <HeadingAnchor
-              key={`${heading.value}-${index}`}
-              href={`#${heading.value}`}
-              selected={heading.value === selectedH1Text}
-            >
-              {heading.value}
-            </HeadingAnchor>
-          )
-        })}
-      </HeadingList>
+      {h1Elements.length > 0 && (
+        <HeadingList isSticky={isSticky}>
+          <HeadingContentTitle>Contents</HeadingContentTitle>
+          {headings.map((heading, index) => {
+            return (
+              <HeadingAnchor
+                key={`${heading.value}-${index}`}
+                href={`#${heading.value}`}
+                selected={heading.value === selectedH1Text}
+              >
+                {heading.value}
+              </HeadingAnchor>
+            )
+          })}
+        </HeadingList>
+      )}
       <Container>
         <Title>{title}</Title>
         <Meta>
