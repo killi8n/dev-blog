@@ -13,9 +13,6 @@ const PostTitle = styled.h2`
   margin: 0;
   cursor: pointer;
 
-  /* font-size: 1.55rem;
-  font-weight: bold; */
-
   transition: color 0.15s linear;
 
   &:hover {
@@ -26,11 +23,9 @@ const PostTitle = styled.h2`
 const PostSummary = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  font-weight: lighter;
 `
 
 const PostMeta = styled.div`
-  /* margin-top: 0.75rem; */
   font-size: 0.95rem;
 `
 const PostDate = styled.span``

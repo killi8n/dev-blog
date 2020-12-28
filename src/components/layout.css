@@ -1,4 +1,4 @@
-@import url("//fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("//fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
 html {
   -ms-text-size-adjust: 100%;
@@ -12,8 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: Roboto, Noto Sans KR, -apple-system, BlinkMacSystemFont,
-    Apple SD Gothic Neo, 애플 SD 산돌고딕 Neo, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
