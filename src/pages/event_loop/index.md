@@ -28,7 +28,7 @@ JS: 싱글 쓰레드로 동작한다.
 
 js는 이렇게 비동기를 구현한다.
 
-```js
+```js{numberLines: true}
 while (queue.waitForMessage()) {
   queue.processNextMessage()
 }

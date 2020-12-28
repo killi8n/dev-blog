@@ -250,7 +250,7 @@ X: 10 일때 예측값 Y: [10.037184]
 
 ```
 
-<img src={pyplotImg} className={styles["ImageStyle"]} />
+![pyplot_image](./pyplot.png)
 
 ## kaggle 실습
 
@@ -426,7 +426,7 @@ grade가 4일때, price 예측값: [276069.25]
 grade가 8일때, price 예측값: [590090.06]
 ```
 
-<img src={resultImg} className={styles["ImageStyle"]} />
+![result_image](./result.png)
 
 다른 따져볼것들이 많아서 단순히 grade만으로 price를 예측하면 오차가 너무많다.
 
