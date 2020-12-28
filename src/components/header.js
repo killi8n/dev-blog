@@ -25,6 +25,10 @@ const Inner = styled.ul`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
+
+  @media only screen and (max-width: 480px) {
+    padding-inline-start: 8px;
+  }
 `
 
 const NavBarItem = styled.li`
