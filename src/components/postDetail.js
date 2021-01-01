@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useCallback } from "react"
 import styled from "styled-components"
 
 // 69 + 40 = navbar height + header margin top
@@ -48,106 +48,55 @@ const HeadingAnchor = styled.a`
   }
 `
 
-const HeadingContentTitle = styled.p``
-
-const getDimensions = element => {
-  const { height } = element.getBoundingClientRect()
-  const offsetTop = element.offsetTop
-  const offsetBottom = offsetTop + height
-  return {
-    height,
-    offsetTop,
-    offsetBottom,
-  }
-}
+const HeadingContentTitle = styled.h3``
 
 const PostDetail = ({ title, date, html, headings }) => {
   const [isSticky, setIsSticky] = useState(false)
-  const [h1Elements, setH1Elements] = useState([])
-  const [selectedH1Text, setSelectedH1Text] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [currentHead, setCurrentHead] = useState("")
   const contentRef = useRef(null)
-  const onScroll = () => {
-    const yValue = window.scrollY
-    setIsSticky(yValue > HEADING_BREAKPOINT)
-
+  const onScroll = useCallback(() => {
     Promise.resolve().then(() => {
-      if (loading) {
+      if (!window) {
         return
       }
-      setLoading(true)
-      const highlightableHeadings = h1Elements.filter(
-        element => yValue >= element.offsetTop - 10
-      )
-      if (highlightableHeadings.length > 0) {
-        const highlightedHeading =
-          highlightableHeadings[highlightableHeadings.length - 1]
-
-        if (selectedH1Text === highlightedHeading.innerText) {
-          setLoading(false)
-          return
+      setIsSticky(window.scrollY > HEADING_BREAKPOINT)
+      const contentSection = contentRef.current
+      if (contentSection) {
+        const heads = Array.from(contentSection.getElementsByTagName("h1"))
+        if (heads.length > 0) {
+          let viewingHead = currentHead
+          heads.forEach(head => {
+            if (!head.getAttribute("id")) {
+              head.setAttribute("id", head.innerText)
+            }
+            if (window.scrollY + 10 >= head.offsetTop) {
+              viewingHead = head.innerText
+            }
+          })
+          if (viewingHead !== currentHead) {
+            setCurrentHead(viewingHead)
+          }
         }
-        setSelectedH1Text(highlightedHeading.innerText)
-      } else {
-        setSelectedH1Text(null)
       }
-      setLoading(false)
     })
-  }
+  }, [contentRef, currentHead, setCurrentHead])
 
   useEffect(() => {
-    const yValue = window.scrollY
-    setIsSticky(yValue > HEADING_BREAKPOINT)
-  }, [setIsSticky])
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll)
+    onScroll()
+    if (window) {
+      window.addEventListener("scroll", onScroll)
+    }
 
     return () => {
-      window.removeEventListener("scroll", onScroll)
+      if (window) {
+        window.removeEventListener("scroll", onScroll)
+      }
     }
   }, [onScroll])
 
-  useEffect(() => {
-    if (contentRef.current) {
-      const elements = Array.from(contentRef.current.getElementsByTagName("h1"))
-      if (h1Elements.length === 0 && elements.length > 0) {
-        elements.forEach(element => {
-          element.setAttribute("id", element.innerText)
-        })
-        setH1Elements(
-          Array.from(elements).map(element => {
-            return {
-              innerText: element.innerText,
-              offsetTop: getDimensions(element).offsetTop,
-              selected: false,
-            }
-          })
-        )
-      }
-    }
-  }, [contentRef, h1Elements, setH1Elements])
-
-  useEffect(() => {
-    if (h1Elements.length === 0) {
-      return
-    }
-    const yValue = window.scrollY
-    const highlightableHeadings = h1Elements.filter(
-      element => yValue >= element.offsetTop
-    )
-    if (highlightableHeadings.length > 0) {
-      const highlightedHeading =
-        highlightableHeadings[highlightableHeadings.length - 1]
-      setSelectedH1Text(highlightedHeading.innerText)
-    } else {
-      setSelectedH1Text(null)
-    }
-  }, [h1Elements, setSelectedH1Text])
-
   return (
     <>
-      {h1Elements.length > 0 && (
+      {headings.length > 0 && (
         <HeadingList isSticky={isSticky}>
           <HeadingContentTitle>Contents</HeadingContentTitle>
           {headings.map((heading, index) => {
@@ -155,7 +104,7 @@ const PostDetail = ({ title, date, html, headings }) => {
               <HeadingAnchor
                 key={`${heading.value}-${index}`}
                 href={`#${heading.value}`}
-                selected={heading.value === selectedH1Text}
+                selected={heading.value === currentHead}
               >
                 {heading.value}
               </HeadingAnchor>
