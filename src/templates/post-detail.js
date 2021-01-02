@@ -3,10 +3,11 @@ import React from "react"
 import Layout from "../components/layout"
 import PostDetail from "../components/postDetail"
 import SEO from "../components/seo"
+import LinkedPostList from "../components/linkedPostList"
 
 const PostDetailTemplate = props => {
+  const { next, previous } = props.pageContext
   const { frontmatter, html, headings } = props.data.markdownRemark
-
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.spoiler} />
@@ -15,6 +16,24 @@ const PostDetailTemplate = props => {
         date={frontmatter.date}
         html={html}
         headings={headings}
+      />
+      <LinkedPostList
+        next={
+          next
+            ? {
+                ...next.frontmatter,
+                slug: next.fields.slug,
+              }
+            : null
+        }
+        previous={
+          previous
+            ? {
+                ...previous.frontmatter,
+                slug: previous.fields.slug,
+              }
+            : null
+        }
       />
     </Layout>
   )
