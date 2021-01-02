@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react"
 import styled from "styled-components"
+import ScrollToTop from "./scrollToTop"
 
 // 69 + 40 = navbar height + header margin top
 const HEADING_BREAKPOINT = 69 + 40
@@ -124,6 +125,7 @@ const PostDetail = ({ title, date, html, headings }) => {
         </Meta>
         <Content ref={contentRef} dangerouslySetInnerHTML={{ __html: html }} />
       </Container>
+      <ScrollToTop isSticky={isSticky} />
     </>
   )
 }
