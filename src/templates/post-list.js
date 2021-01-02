@@ -1,14 +1,18 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SummaryBar from "../components/summaryBar"
 import PostItem from "../components/postItem"
 import PostList from "../components/postList"
+import Pagination from "../components/pagination"
 
 const PostListTemplate = props => {
-  const posts = props.data.allMarkdownRemark.edges
-  const { totalCount } = props.data.allMarkdownRemark
+  const {
+    totalCount,
+    postList: posts,
+    currentPage,
+    numPages,
+  } = props.pageContext
   return (
     <Layout>
       <SEO title="post list" />
@@ -28,28 +32,9 @@ const PostListTemplate = props => {
           )
         })}
       </PostList>
+      <Pagination numPages={numPages} currentPage={currentPage} />
     </Layout>
   )
 }
 
 export default PostListTemplate
-
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            date
-            spoiler
-          }
-          fields {
-            slug
-          }
-        }
-      }
-      totalCount
-    }
-  }
-`

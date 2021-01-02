@@ -27,20 +27,20 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  createPage({
-    path: "/",
-    component: path.resolve(`./src/templates/post-list.js`),
-    context: {},
-  })
-
-  const postDetailResult = await graphql(`
+  const postListResult = await graphql(`
     {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+        totalCount
         edges {
           node {
             id
             fields {
               slug
+            }
+            frontmatter {
+              title
+              spoiler
+              date
             }
           }
           next {
@@ -70,17 +70,38 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  postDetailResult.data.allMarkdownRemark.edges.forEach(
-    ({ node, next, previous }) => {
-      createPage({
-        path: node.fields.slug,
-        component: path.resolve(`./src/templates/post-detail.js`),
-        context: {
-          slug: node.fields.slug,
-          next,
-          previous,
-        },
-      })
-    }
-  )
+  const {
+    allMarkdownRemark: { edges: postList, totalCount },
+  } = postListResult.data
+
+  const postsPerPage = 10
+  const numPages = Math.ceil(postList.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, index) => {
+    createPage({
+      path: index === 0 ? "/" : `/list/${index + 1}`,
+      component: path.resolve(`./src/templates/post-list.js`),
+      context: {
+        totalCount,
+        postList: postList.slice(
+          index * postsPerPage,
+          (index + 1) * postsPerPage
+        ),
+        currentPage: index + 1,
+        numPages,
+      },
+    })
+  })
+
+  postList.forEach(({ node, next, previous }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/post-detail.js`),
+      context: {
+        slug: node.fields.slug,
+        next,
+        previous,
+      },
+    })
+  })
 }
