@@ -54,12 +54,17 @@ const PostDetail = ({ title, date, html, headings }) => {
   const [isSticky, setIsSticky] = useState(false)
   const [currentHead, setCurrentHead] = useState("")
   const contentRef = useRef(null)
+
   const onScroll = useCallback(() => {
     Promise.resolve().then(() => {
       if (!window) {
         return
       }
-      setIsSticky(window.scrollY > HEADING_BREAKPOINT)
+      const currentIsSticky = window.scrollY > HEADING_BREAKPOINT
+      if (!currentIsSticky) {
+        setCurrentHead("")
+      }
+      setIsSticky(currentIsSticky)
       const contentSection = contentRef.current
       if (contentSection) {
         const heads = Array.from(contentSection.getElementsByTagName("h1"))
