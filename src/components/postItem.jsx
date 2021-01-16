@@ -26,9 +26,7 @@ const PostMeta = styled.div`
 `;
 const PostDate = styled.span``;
 
-const PostItem = ({
-  title, date, spoiler, slug,
-}) => (
+const PostItem = ({ title, date, spoiler, slug }) => (
   <Item>
     <Link to={slug}>
       <PostTitle>{title}</PostTitle>

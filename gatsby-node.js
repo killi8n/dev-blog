@@ -96,7 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
   postList.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve('./src/templates/post-detail.jsx'),
+      component: path.resolve('./src/templates/post-detail.tsx'),
       context: {
         slug: node.fields.slug,
         next,

@@ -13,7 +13,7 @@ const PageItem = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   cursor: pointer;
-  font-weight: ${(props) => (props.isCurrent ? 'bolder' : 'lighter')};
+  font-weight: ${props => (props.isCurrent ? 'bolder' : 'lighter')};
 `;
 
 const Pagination = ({ numPages, currentPage }) => (

@@ -9,8 +9,8 @@ const NEXT_ICON_STRING = '→';
 
 const PostItem = styled.div`
   flex: 1;
-  margin-left: ${(props) => !props.isPrev && 'auto'};
-  text-align: ${(props) => !props.isPrev && 'right'};
+  margin-left: ${props => !props.isPrev && 'auto'};
+  text-align: ${props => !props.isPrev && 'right'};
 
   display: flex;
   flex-direction: column;
@@ -32,11 +32,7 @@ const LinkedPostItem = ({ isPrev = false, post }) => {
           {isPrev ? '이전 포스트' : '다음 포스트'}
         </LinkedPostDescription>
         <LinkedPostTitle>
-          {isPrev && PREV_ICON_STRING}
-          {' '}
-          {title}
-          {' '}
-          {!isPrev && NEXT_ICON_STRING}
+          {isPrev && PREV_ICON_STRING} {title} {!isPrev && NEXT_ICON_STRING}
         </LinkedPostTitle>
       </Link>
     </PostItem>

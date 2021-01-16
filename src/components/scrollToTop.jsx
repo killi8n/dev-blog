@@ -11,7 +11,7 @@ const CircledContainer = styled.div`
   width: auto;
   height: 2rem;
   border-radius: 12px;
-  background-color: #4dabf7;
+  background-color: #3b5bdb;
   color: #ffffff;
 
   position: fixed;
@@ -25,7 +25,7 @@ const CircledContainer = styled.div`
   font-weight: 600;
 
   &:hover {
-    background-color: #3b5bdb;
+    background-color: #4dabf7;
   }
 
   @media only screen and (max-width: 1365px) {

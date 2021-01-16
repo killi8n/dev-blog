@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useRef, useState, useCallback,
-} from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ScrollToTop from './scrollToTop';
@@ -30,8 +28,8 @@ const Date = styled.span``;
 const Content = styled.div``;
 
 const HeadingList = styled.div`
-  position: ${(props) => (props.isSticky ? 'fixed' : 'absolute')};
-  top: ${(props) => props.isSticky && '10px'};
+  position: ${props => (props.isSticky ? 'fixed' : 'absolute')};
+  top: ${props => props.isSticky && '10px'};
   margin-left: -250px;
   max-width: 180px;
 
@@ -41,8 +39,8 @@ const HeadingList = styled.div`
 `;
 
 const HeadingAnchor = styled.a`
-  font-weight: ${(props) => props.selected && 'bold'};
-  color: ${(props) => (props.selected ? '#000000' : '#868e96')};
+  font-weight: ${props => props.selected && 'bold'};
+  color: ${props => (props.selected ? '#000000' : '#868e96')};
   display: flex;
 
   font-size: 0.9rem;
@@ -54,9 +52,7 @@ const HeadingAnchor = styled.a`
 
 const HeadingContentTitle = styled.h3``;
 
-const PostDetail = ({
-  title, date, html, headings,
-}) => {
+const PostDetail = ({ title, date, html, headings }) => {
   const [isSticky, setIsSticky] = useState(false);
   const [currentHead, setCurrentHead] = useState('');
   const contentRef = useRef(null);
@@ -76,7 +72,7 @@ const PostDetail = ({
         const heads = Array.from(contentSection.getElementsByTagName('h1'));
         if (heads.length > 0) {
           let viewingHead = currentHead;
-          heads.forEach((head) => {
+          heads.forEach(head => {
             if (!head.getAttribute('id')) {
               head.setAttribute('id', head.innerText);
             }
@@ -110,7 +106,7 @@ const PostDetail = ({
       {headings.length > 0 && (
         <HeadingList isSticky={isSticky}>
           <HeadingContentTitle>Contents</HeadingContentTitle>
-          {headings.map((heading) => (
+          {headings.map(heading => (
             <HeadingAnchor
               key={`${heading.value}`}
               href={`#${heading.value}`}

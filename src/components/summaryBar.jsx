@@ -6,13 +6,7 @@ const Bar = styled.div`
   margin-top: 1rem;
 `;
 
-const SummaryBar = ({ totalCount }) => (
-  <Bar>
-    {totalCount}
-    {' '}
-    articles
-  </Bar>
-);
+const SummaryBar = ({ totalCount }) => <Bar>{totalCount} articles</Bar>;
 
 SummaryBar.defaultProps = {
   totalCount: 0,

@@ -3,7 +3,12 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -15,14 +20,28 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
+    "indent": ["error", 2],
+    "prettier/prettier": "error",
+    "react/jsx-one-expression-per-line": "off"
   },
   "ignorePatterns": [
     "node_modules/**/*",
     ".vscode/**/*",
     "public/**/*",
-    "src/pages/**/*"
-  ]
+    "src/pages/**/*",
+    "gatsby-node.js",
+    "gatsby-config.js",
+    "gatsby-browser.js",
+    "gatsby-ssr.js"
+  ],
+  "parser": "@typescript-eslint/parser"
 }

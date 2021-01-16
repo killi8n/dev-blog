@@ -7,18 +7,16 @@ import PostItem from '../components/postItem';
 import PostList from '../components/postList';
 import Pagination from '../components/pagination';
 
-const PostListTemplate = (props) => {
+const PostListTemplate = props => {
   const {
-    pageContext: {
-      totalCount, postList: posts, currentPage, numPages,
-    },
+    pageContext: { totalCount, postList: posts, currentPage, numPages },
   } = props;
   return (
     <Layout>
       <SEO title="post list" />
       <PostList>
         <SummaryBar totalCount={totalCount} />
-        {posts.map((post) => {
+        {posts.map(post => {
           const { slug } = post.node.fields;
           const { title, date, spoiler } = post.node.frontmatter;
           return (
