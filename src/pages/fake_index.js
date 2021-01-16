@@ -1,29 +1,29 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import SummaryBar from "../components/summaryBar"
-import PostItem from "../components/postItem"
-import PostList from "../components/postList"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import SummaryBar from '../components/summaryBar';
+import PostItem from '../components/postItem';
+import PostList from '../components/postList';
 
-const IndexPage = props => {
-  const posts = props.data.allMarkdownRemark.edges
-  const { totalCount } = props.data.allMarkdownRemark
+const IndexPage = (props) => {
+  const posts = props.data.allMarkdownRemark.edges;
+  const { totalCount } = props.data.allMarkdownRemark;
   return (
     <Layout>
       <SEO title="Home" />
       <SummaryBar totalCount={totalCount} />
       <PostList>
-        {posts.map(post => {
-          const { title, date, spoiler } = post.node.frontmatter
-          return <PostItem title={title} date={date} spoiler={spoiler} />
+        {posts.map((post) => {
+          const { title, date, spoiler } = post.node.frontmatter;
+          return <PostItem title={title} date={date} spoiler={spoiler} />;
         })}
       </PostList>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   {
@@ -40,4 +40,4 @@ export const pageQuery = graphql`
       totalCount
     }
   }
-`
+`;

@@ -1,13 +1,13 @@
-import { graphql } from "gatsby"
-import React from "react"
-import Layout from "../components/layout"
-import PostDetail from "../components/postDetail"
-import SEO from "../components/seo"
-import LinkedPostList from "../components/linkedPostList"
+import { graphql } from 'gatsby';
+import React from 'react';
+import Layout from '../components/layout';
+import PostDetail from '../components/postDetail';
+import SEO from '../components/seo';
+import LinkedPostList from '../components/linkedPostList';
 
-const PostDetailTemplate = props => {
-  const { next, previous } = props.pageContext
-  const { frontmatter, html, headings } = props.data.markdownRemark
+const PostDetailTemplate = (props) => {
+  const { next, previous } = props.pageContext;
+  const { frontmatter, html, headings } = props.data.markdownRemark;
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.spoiler} />
@@ -21,25 +21,25 @@ const PostDetailTemplate = props => {
         next={
           next
             ? {
-                ...next.frontmatter,
-                slug: next.fields.slug,
-              }
+              ...next.frontmatter,
+              slug: next.fields.slug,
+            }
             : null
         }
         previous={
           previous
             ? {
-                ...previous.frontmatter,
-                slug: previous.fields.slug,
-              }
+              ...previous.frontmatter,
+              slug: previous.fields.slug,
+            }
             : null
         }
       />
     </Layout>
-  )
-}
+  );
+};
 
-export default PostDetailTemplate
+export default PostDetailTemplate;
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -60,4 +60,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -56,11 +56,14 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   text-decoration: none;
-  color: inherit;
+  color: #4dabf7;
+
+  transition: color 0.15s linear;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  color: #3b5bdb;
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -403,7 +406,9 @@ p {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.75rem;
 }
 pre {
   margin-left: 0;

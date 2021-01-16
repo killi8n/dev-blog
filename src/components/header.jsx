@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "styled-components"
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
 const NavBar = styled.nav`
   box-shadow: 0 2px 4px rgba(3, 27, 78, 0.1);
@@ -9,7 +9,7 @@ const NavBar = styled.nav`
 
   line-height: 44px;
   font-size: 34px;
-`
+`;
 
 const Inner = styled.ul`
   background: #ffffff;
@@ -29,14 +29,16 @@ const Inner = styled.ul`
   @media only screen and (max-width: 480px) {
     padding-inline-start: 8px;
   }
-`
+`;
 
 const NavBarItem = styled.li`
   list-style: none;
 
   padding-left: 8px;
   padding-right: 8px;
-`
+
+  font-weight: 600;
+`;
 
 const Header = ({ siteTitle }) => (
   <NavBar>
@@ -44,14 +46,14 @@ const Header = ({ siteTitle }) => (
       <NavBarItem>{siteTitle}</NavBarItem>
     </Inner>
   </NavBar>
-)
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
-  siteTitle: ``,
-}
+  siteTitle: '',
+};
 
-export default Header
+export default Header;
