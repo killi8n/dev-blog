@@ -2,10 +2,10 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import SummaryBar from '../components/summaryBar';
-import PostItem from '../components/postItem';
-import PostList from '../components/postList';
-import Pagination from '../components/pagination';
+import SummaryBar from '../components/SummaryBar';
+import PostItem from '../components/PostItem';
+import PostList from '../components/PostList';
+import Pagination from '../components/Pagination';
 
 const PostListTemplate = props => {
   const {
@@ -13,7 +13,7 @@ const PostListTemplate = props => {
   } = props;
   return (
     <Layout>
-      <SEO title="post list" />
+      <SEO title="post list" lang="kr" description="Dev blog" meta={[]} />
       <PostList>
         <SummaryBar totalCount={totalCount} />
         {posts.map(post => {

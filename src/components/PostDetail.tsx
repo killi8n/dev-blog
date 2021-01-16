@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import ScrollToTop from './scrollToTop';
+import ScrollToTop from './ScrollToTop';
 
 // 69 + 40 = navbar height + header margin top
 const HEADING_BREAKPOINT = 69 + 40;

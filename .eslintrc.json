@@ -29,9 +29,11 @@
       1,
       { "extensions": [".js", ".jsx", ".tsx"] }
     ],
-    "indent": ["error", 2],
+    "indent": "off",
     "prettier/prettier": "error",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off",
+    "import/extensions": "off"
   },
   "ignorePatterns": [
     "node_modules/**/*",

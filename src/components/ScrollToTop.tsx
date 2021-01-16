@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -33,26 +33,18 @@ const CircledContainer = styled.div`
   }
 `;
 
-const ScrollToTop = ({ isSticky }) => {
+const ScrollToTop: FC = () => {
   const onClick = () => {
     if (typeof window === 'undefined') {
       return;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  return (
-    <CircledContainer onClick={onClick} isSticky={isSticky}>
-      Scroll To Top
-    </CircledContainer>
-  );
+  return <CircledContainer onClick={onClick}>Scroll To Top</CircledContainer>;
 };
 
-ScrollToTop.defaultProps = {
-  isSticky: false,
-};
+ScrollToTop.defaultProps = {};
 
-ScrollToTop.propTypes = {
-  isSticky: PropTypes.bool,
-};
+ScrollToTop.propTypes = {};
 
 export default ScrollToTop;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CustomizedPropTypes from '../lib/propTypes';
-import LinkedPostItem from './linkedPostItem';
+import LinkedPostItem from './LinkedPostItem';
 
 const PostList = styled.div`
   display: flex;

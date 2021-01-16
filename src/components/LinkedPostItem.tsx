@@ -7,7 +7,7 @@ import CustomizedPropTypes from '../lib/propTypes';
 const PREV_ICON_STRING = '←';
 const NEXT_ICON_STRING = '→';
 
-const PostItem = styled.div`
+const PostItem = styled.div<{ isPrev: boolean }>`
   flex: 1;
   margin-left: ${props => !props.isPrev && 'auto'};
   text-align: ${props => !props.isPrev && 'right'};

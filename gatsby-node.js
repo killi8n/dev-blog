@@ -80,12 +80,12 @@ exports.createPages = async ({ graphql, actions }) => {
   Array.from({ length: numPages }).forEach((_, index) => {
     createPage({
       path: index === 0 ? '/' : `/list/${index + 1}`,
-      component: path.resolve('./src/templates/post-list.jsx'),
+      component: path.resolve('./src/templates/post-list.tsx'),
       context: {
         totalCount,
         postList: postList.slice(
           index * postsPerPage,
-          (index + 1) * postsPerPage,
+          (index + 1) * postsPerPage
         ),
         currentPage: index + 1,
         numPages,

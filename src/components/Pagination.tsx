@@ -9,7 +9,7 @@ const PageList = styled.div`
 
   margin-top: 1rem;
 `;
-const PageItem = styled.div`
+const PageItem = styled.div<{ isCurrent: boolean }>`
   padding-left: 1rem;
   padding-right: 1rem;
   cursor: pointer;
