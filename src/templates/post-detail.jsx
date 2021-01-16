@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby';
 import React from 'react';
-import Layout from '../components/_Layout';
+import Layout from '../components/Layout';
 import PostDetail from '../components/postDetail';
-import SEO from '../components/_SEO';
+import SEO from '../components/SEO';
 import LinkedPostList from '../components/linkedPostList';
 
 const PostDetailTemplate = (props) => {
