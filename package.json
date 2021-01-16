@@ -60,7 +60,9 @@
     "url": "https://github.com/killi8n/dev-blog/issues"
   },
   "husky": {
-    "hooks": "lint-staged"
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,jsx}": [
