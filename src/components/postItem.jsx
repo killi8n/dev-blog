@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 const Item = styled.li`
   list-style: none;
@@ -38,5 +39,19 @@ const PostItem = ({
     </PostMeta>
   </Item>
 );
+
+PostItem.defaultProps = {
+  title: '',
+  date: '',
+  spoiler: '',
+  slug: '',
+};
+
+PostItem.propTypes = {
+  title: PropTypes.string,
+  date: PropTypes.string,
+  spoiler: PropTypes.string,
+  slug: PropTypes.string,
+};
 
 export default PostItem;

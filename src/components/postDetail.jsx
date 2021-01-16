@@ -2,6 +2,7 @@ import React, {
   useEffect, useRef, useState, useCallback,
 } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ScrollToTop from './scrollToTop';
 
 // 69 + 40 = navbar height + header margin top
@@ -109,9 +110,9 @@ const PostDetail = ({
       {headings.length > 0 && (
         <HeadingList isSticky={isSticky}>
           <HeadingContentTitle>Contents</HeadingContentTitle>
-          {headings.map((heading, index) => (
+          {headings.map((heading) => (
             <HeadingAnchor
-              key={`${heading.value}-${index}`}
+              key={`${heading.value}`}
               href={`#${heading.value}`}
               selected={heading.value === currentHead}
             >
@@ -130,6 +131,20 @@ const PostDetail = ({
       <ScrollToTop isSticky={isSticky} />
     </>
   );
+};
+
+PostDetail.defaultProps = {
+  title: '',
+  date: '',
+  html: '',
+  headings: [],
+};
+
+PostDetail.propTypes = {
+  title: PropTypes.string,
+  date: PropTypes.string,
+  html: PropTypes.string,
+  headings: PropTypes.arrayOf({ value: PropTypes.string }),
 };
 
 export default PostDetail;

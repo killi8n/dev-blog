@@ -47,6 +47,10 @@ const ScrollToTop = ({ isSticky }) => {
   );
 };
 
+ScrollToTop.defaultProps = {
+  isSticky: false,
+};
+
 ScrollToTop.propTypes = {
   isSticky: PropTypes.bool,
 };

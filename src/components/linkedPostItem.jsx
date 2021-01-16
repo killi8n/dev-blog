@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { LinkedPostShape } from '../lib/propTypes';
+import CustomizedPropTypes from '../lib/propTypes';
 
 const PREV_ICON_STRING = '←';
 const NEXT_ICON_STRING = '→';
@@ -43,9 +43,19 @@ const LinkedPostItem = ({ isPrev = false, post }) => {
   );
 };
 
+LinkedPostItem.defaultProps = {
+  isPrev: false,
+  post: {
+    title: '',
+    spoiler: '',
+    date: '',
+    slug: '',
+  },
+};
+
 LinkedPostItem.propTypes = {
   isPrev: PropTypes.bool,
-  post: LinkedPostShape,
+  post: CustomizedPropTypes.LinkedPostShape,
 };
 
 export default LinkedPostItem;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const List = styled.ul`
   margin: 0;
@@ -7,5 +8,13 @@ const List = styled.ul`
 `;
 
 const PostList = ({ children }) => <List>{children}</List>;
+
+PostList.defaultProps = {
+  children: null,
+};
+
+PostList.propTypes = {
+  children: PropTypes.node,
+};
 
 export default PostList;

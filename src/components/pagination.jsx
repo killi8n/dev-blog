@@ -19,14 +19,18 @@ const PageItem = styled.div`
 const Pagination = ({ numPages, currentPage }) => (
   <PageList>
     {Array.from({ length: numPages }).map((_, index) => (
+      // eslint-disable-next-line react/no-array-index-key
       <PageItem key={index} isCurrent={currentPage === index + 1}>
-        <Link to={index === 0 ? '/' : `/list/${index + 1}`}>
-          {index + 1}
-        </Link>
+        <Link to={index === 0 ? '/' : `/list/${index + 1}`}>{index + 1}</Link>
       </PageItem>
     ))}
   </PageList>
 );
+
+Pagination.defaultProps = {
+  numPages: 0,
+  currentPage: 0,
+};
 
 Pagination.propTypes = {
   numPages: PropTypes.number,

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { LinkedPostShape } from '../lib/propTypes';
+import CustomizedPropTypes from '../lib/propTypes';
 import LinkedPostItem from './linkedPostItem';
 
 const PostList = styled.div`
@@ -14,9 +14,24 @@ const LinkedPostList = ({ next, previous: prev }) => (
   </PostList>
 );
 
+LinkedPostList.defaultProps = {
+  next: {
+    title: '',
+    spoiler: '',
+    date: '',
+    slug: '',
+  },
+  previous: {
+    title: '',
+    spoiler: '',
+    date: '',
+    slug: '',
+  },
+};
+
 LinkedPostList.propTypes = {
-  next: LinkedPostShape,
-  previous: LinkedPostShape,
+  next: CustomizedPropTypes.LinkedPostShape,
+  previous: CustomizedPropTypes.LinkedPostShape,
 };
 
 export default LinkedPostList;

@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 import SummaryBar from '../components/summaryBar';
 import PostItem from '../components/postItem';
 import PostList from '../components/postList';
@@ -8,11 +9,10 @@ import Pagination from '../components/pagination';
 
 const PostListTemplate = (props) => {
   const {
-    totalCount,
-    postList: posts,
-    currentPage,
-    numPages,
-  } = props.pageContext;
+    pageContext: {
+      totalCount, postList: posts, currentPage, numPages,
+    },
+  } = props;
   return (
     <Layout>
       <SEO title="post list" />

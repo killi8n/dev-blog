@@ -1,13 +1,19 @@
+/* eslint-disable react/prop-types */
 import { graphql } from 'gatsby';
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import PostDetail from '../components/postDetail';
-import SEO from '../components/seo';
+import SEO from '../components/SEO';
 import LinkedPostList from '../components/linkedPostList';
 
 const PostDetailTemplate = (props) => {
-  const { next, previous } = props.pageContext;
-  const { frontmatter, html, headings } = props.data.markdownRemark;
+  const {
+    pageContext: { next, previous },
+    data: {
+      markdownRemark: { frontmatter, html, headings },
+    },
+  } = props;
+
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.spoiler} />

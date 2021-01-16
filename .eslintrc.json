@@ -17,6 +17,12 @@
   },
   "plugins": ["react"],
   "rules": {
-    "import/no-unresolved": [2, { "caseSensitve": false }]
-  }
+    "import/no-unresolved": "off"
+  },
+  "ignorePatterns": [
+    "node_modules/**/*",
+    ".vscode/**/*",
+    "public/**/*",
+    "src/pages/**/*"
+  ]
 }
